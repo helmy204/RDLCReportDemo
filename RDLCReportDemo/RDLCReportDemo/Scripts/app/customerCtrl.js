@@ -12,7 +12,7 @@
         $scope.addMode = false;
 
         // get all customer information
-        $http.get('/api/Customer/').success(function (data) {
+        $http.get('/api/Customers/').success(function (data) {
             $scope.customers = data;
             $scope.loading = false;
         }).error(function () {
@@ -33,7 +33,7 @@
         // Insert Customer
         $scope.add = function () {
             $scope.loading = true;
-            $http.post('/api/Customer', this.newCustomer).success(function (data) {
+            $http.post('/api/Customers/', this.newcustomer).success(function (data) {
                 alert('Added Successfully!');
                 $scope.addMode = false;
                 $scope.customers.push(data);
@@ -50,7 +50,7 @@
             $scope.loading = true;
             var friend = this.customer;
             alert(friend);
-            $http.put('/api/Customer/' + friend.Id, friend).success(function (data) {
+            $http.put('/api/Customers/' + friend.Id, friend).success(function (data) {
                 alert("Saved Successfully!");
                 friend.editMode = false;
                 $scope.loading = false;
@@ -64,7 +64,7 @@
         $scope.deletecustomer = function () {
             $scope.loading = true;
             var Id = this.customer.Id;
-            $http.delete('/api/Customer/' + Id).success(function (data) {
+            $http.delete('/api/Customers/' + Id).success(function (data) {
                 alert("Deleted Successfully!!");
                 $.each($scope.customers, function (i) {
                     if ($scope.customers[i].Id === Id) {

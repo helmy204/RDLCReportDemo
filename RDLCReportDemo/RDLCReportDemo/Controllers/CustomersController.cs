@@ -37,6 +37,7 @@ namespace RDLCReportDemo.Controllers
         {
             if(ModelState.IsValid)
             {
+                customer.DateOfBirth = DateTime.Now;
                 db.Customers.Add(customer);
                 db.SaveChanges();
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, customer);
